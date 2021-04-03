@@ -24,17 +24,25 @@ function formatDate(timestamp) {
 }
 
 function showTemperature(response) {
-document.querySelector("#dayTemp").innerHTML = Math.round(
-  response.data.main.temp);
-document.querySelector("#city").innerHTML = response.data.name;
-document.querySelector("#description").innerHTML =
-  response.data.weather[0].description;
-document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-document.querySelector("#wind").innerHTML = Math.round(3.6 * response.data.wind.speed);
-document.querySelector("#date").innerHTML = formatDate(response.data.dt * 1000);
+  document.querySelector("#dayTemp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    3.6 * response.data.wind.speed
+  );
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
-let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-let city = "Locarno";
-axios.get(apiUrl).then(showTemperature);
+function searchCity(city) {
+  let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
+searchCity("Locarno");
+
 
