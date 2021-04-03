@@ -11,21 +11,17 @@
 </head>
 <body>
   <div class="container">
-    <div class="AppBorder">
+    <div class="appBorder">
     <div class="row">
       <div class="col">
-       <ul>
-        <p>
-         <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Clear"
+        <div class="weatherOverview">
+         <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Clear" class="float-left"
          />
-        </p>
-        <p>
+        <p id="description">
          Clear
         </p>
-         <div>
-          11°C|°F
-         </div>
-       </ul>
+          <span class="dayTemperature" id="dayTemp"><strong>12</strong>
+              <span class="units"><a href="#" id="linkCelsiusDay">°C|°F</a></span></span>        </div>
       </div>
       <div class="col">
        <p>
@@ -49,10 +45,10 @@
       </div>
     </div>
   </div>
-  </div>
-  <div>
+   <div>
    <a href="https://github.com/Myrtaru/ShecodesWeatherApp" target="-blank">Open-source code</a>
   <span style="color:rgb(235, 110, 75)"> by Myrta Rüegger</span>
+  </div>
   </div>
   <script src="src/index.js"></script>
 </body>

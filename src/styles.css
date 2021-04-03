@@ -1,3 +1,37 @@
-h1 {
-  color:green;
+body{
+  color: rgba(14, 36, 23);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+h1 {
+  font-size: 3.5em;
+  font-weight: bold;
+}
+p {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+ul{
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+a {
+ text-decoration: none;
+ font-size: 0.6em;
+}
+.container{
+max-width: 40em;
+margin: 1em auto;
+}
+.appBorder {
+padding: 1em;
+border: 1px solid rgba(14, 36, 23);
+border-radius: 6px; 
+}
+.dayTemperature {
+  font-size: 1.5em;
+  padding: 0.3em 0.1em;
+  border: 1px solid rgba(14, 36, 23);
+  border-radius: 5px;
+}
+
