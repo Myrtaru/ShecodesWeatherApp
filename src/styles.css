@@ -10,6 +10,9 @@ p {
   font-size: 1.5em;
   font-weight: bold;
 }
+p:first-letter {
+  text-transform: capitalize;
+}
 ul{
   list-style: none;
   margin:0;
@@ -23,10 +26,10 @@ a {
 max-width: 40em;
 margin: 1em auto;
 }
-.appBorder {
-background-image: url("src/img/flashkaikowetter.jpg");
+.card {
+background-image:url("img/flashkaikowetter.jpg");
 background-size:100%;
-padding: 1em;
+padding: 2em;
 border: 1px solid rgba(14, 36, 23);
 border-radius: 6px; 
 }
