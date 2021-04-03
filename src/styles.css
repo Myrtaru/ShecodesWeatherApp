@@ -24,6 +24,8 @@ max-width: 40em;
 margin: 1em auto;
 }
 .appBorder {
+background-image: url("src/img/flashkaikowetter.jpg");
+background-size:100%;
 padding: 1em;
 border: 1px solid rgba(14, 36, 23);
 border-radius: 6px; 
