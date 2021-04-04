@@ -37,6 +37,12 @@ function showTemperature(response) {
   document.querySelector("#date").innerHTML = formatDate(
     response.data.dt * 1000
   );
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    iconElement.setAttribute("alt", response.data.weather[0].description); 
 }
 function searchCity(city) {
   let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
