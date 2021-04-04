@@ -1,7 +1,5 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  //let h3 = document.querySelector("#date");
-  //h3.innerHTML = formatDate(actualDate);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -22,11 +20,8 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
-
 function showTemperature(response) {
-  document.querySelector("#dayTemp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#dayTemp").innerHTML = Math.round(celsiusTemp);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
@@ -43,6 +38,7 @@ function showTemperature(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     iconElement.setAttribute("alt", response.data.weather[0].description); 
+    celsiusTemp = response.data.main.temp;
 }
 function searchCity(city) {
   let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
@@ -55,7 +51,29 @@ let searchInput = document.querySelector("#search-input").value;
 searchCity(searchInput.value);
 searchCity(searchInput);
 } 
-searchCity("Zurich");
+function showFahrenheitTemp(event){
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  document.querySelector("#dayTemp").innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  document.querySelector("#dayTemp").innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
 
 let formInput = document.querySelector("#search-form");
 formInput.addEventListener("submit", search);
+
+let fahrenheitLink = document.querySelector("#linkFahrenheitDay");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#linkCelsiusDay");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
+searchCity("Zurich");

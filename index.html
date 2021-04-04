@@ -15,11 +15,15 @@
         <div class="card-body">
     <div class="row">
       <div class="col-sm-4">
-        <div class="weatherOverview">
-         <img src="" alt="" id="icon" class="float-left"/>
+        <div class="clearfix weatherOverview">
+         <img src="" alt="" id="icon" class="float-left" />
         <p id="description"></p>
           <span class="dayTemperature"><strong id="dayTemp"></strong>
-              <span class="units"><a href="#" id="linkCelsiusDay">°C|°F</a></span></span>        </div>
+              <span class="units">
+                <a href="#" id="linkCelsiusDay" class="active">°C</a>
+                I<a href="#" id="linkFahrenheitDay">°F</a></span>
+              </span>    
+        </div>
       </div>
       <div class="col-sm-6">
       <ul> 

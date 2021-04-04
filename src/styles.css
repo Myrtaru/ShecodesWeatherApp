@@ -1,5 +1,5 @@
 body{
-  color: rgba(14, 36, 23);
+  color: #192e31;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 h1 {
@@ -20,29 +20,30 @@ ul{
 }
 a {
  text-decoration: none;
+ color:#0f499b;
 }
 input {
   padding: 6px 12px;
-  border: 1px solid rgba(14, 36, 23);
+  border: 1px solid #192e31;
   border-radius: 5px;
-  box-shadow: rgba(14, 36, 23, 0.5) 0px 5px 5px 0;
+  box-shadow: #192e31 0px 5px 5px 0;
 }
 button {
   color: white;
-  background-color: rgba(14, 36, 23);
-  border-color:rgba(14, 36, 23);
+  background-color:#192e31;
+  border-color:#192e31;
   padding: 6px 12px;
-  border: 1px solid rgba(14, 36, 23);
+  border: 1px solid#192e31;
   border-radius: 5px;
-  box-shadow:rgba(14, 36, 23, 0.5) 0px 5px 5px 0;
+  box-shadow:#192e31 0px 5px 5px 0;
 }
 input,
 button:hover {
-  color: rgba(14, 36, 23);
+  color: #192e31;
   background-color: transparent;
 }
 button:hover {
-  border-color: rgba(14, 36, 23);
+  border-color: #192e31;
 }
 .container{
 max-width: 40em;
@@ -52,16 +53,21 @@ margin: 1em auto;
 background-image:url("img/flashkaikowetter.jpg");
 background-size: cover;
 padding: 2em;
-border: 1px solid rgba(14, 36, 23);
+border: 1px solid #192e31;
 border-radius: 6px; 
 }
+
 .dayTemperature {
   font-size: 1.5em;
   padding: 0.3em 0.1em;
-  border: 1px solid rgba(14, 36, 23);
+  border: 1px solid#192e31;
   border-radius: 5px;
 }
 .units {
-font-size: 0.6em;
+font-size: 0.7em;
+}
+.active {
+color:#192e31;
+cursor: default;
 }
 
