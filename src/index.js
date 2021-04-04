@@ -49,6 +49,13 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
-searchCity("Locarno");
+function search(event) {
+  event.preventDefault();
+let searchInput = document.querySelector("#search-input").value;
+searchCity(searchInput.value);
+searchCity(searchInput);
+} 
+searchCity("Zurich");
 
-
+let formInput = document.querySelector("#search-form");
+formInput.addEventListener("submit", search);
