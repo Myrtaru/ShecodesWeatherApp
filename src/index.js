@@ -20,6 +20,30 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+
+function showForecast(){
+  let forecast = document.querySelector("#forecast");
+  let shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHTML = `<div class="row">`;
+  shortDays.forEach(function (shortDay){
+  forecastHTML = forecastHTML +`
+    <div class="col-2">
+      <div class="weatherForecastDate">${shortDay}</div>
+      <img
+        src="http://openweathermap.org/img/wn/50d@2x.png"
+        alt=""
+        width="36"
+      />
+      <div class="weatherForecastTemp">
+        <span class="weatherForecastTempMax">19°</span>
+        <span class="weatherForecastTempMin">10°</span>
+      </div>
+    </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+forecast.innerHTML= forecastHTML;
+}
 function showTemperature(response) {
   celsiusTemp = response.data.main.temp;
   document.querySelector("#dayTemp").innerHTML = Math.round(celsiusTemp);
@@ -62,6 +86,7 @@ function showCelsiusTemp(event) {
 }
 let celsiusTemp = null;
 
+
 let formInput = document.querySelector("#search-form");
 formInput.addEventListener("submit", submitSearch);
 
@@ -72,3 +97,4 @@ let celsiusLink = document.querySelector("#linkCelsiusDay");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 searchCity("Zurich");
+showForecast();
