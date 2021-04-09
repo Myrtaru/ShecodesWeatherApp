@@ -20,29 +20,42 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
-
-function showForecast(){
+function formatDay(timestamp){
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let dayShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return dayShort[day]
+}
+function showForecast(response){
+  let dailyForecast = response.data.daily;
   let forecast = document.querySelector("#forecast");
-  let shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHTML = `<div class="row">`;
-  shortDays.forEach(function (shortDay){
-  forecastHTML = forecastHTML +`
+  dailyForecast.forEach(function (forecastDay, index){
+    if (index > 0 && index < 6){
+  forecastHTML +=
+    `
     <div class="col-2">
-      <div class="weatherForecastDate">${shortDay}</div>
+      <div class="weatherForecastDate">${formatDay(forecastDay.dt)}</div>
       <img
-        src="http://openweathermap.org/img/wn/50d@2x.png"
+        src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
         alt=""
         width="36"
       />
       <div class="weatherForecastTemp">
-        <span class="weatherForecastTempMax">19°</span>
-        <span class="weatherForecastTempMin">10°</span>
+        <span class="weatherForecastTempMax">${Math.round(forecastDay.temp.max)}°C |</span>
+        <span class="weatherForecastTempMin">${Math.round(forecastDay.temp.min)}°C</span>
       </div>
     </div>
   `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
 forecast.innerHTML= forecastHTML;
+}
+function getForecast(coords){
+let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showForecast);
 }
 function showTemperature(response) {
   celsiusTemp = response.data.main.temp;
@@ -61,6 +74,7 @@ function showTemperature(response) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 function searchCity(city) {
   let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
@@ -97,4 +111,3 @@ let celsiusLink = document.querySelector("#linkCelsiusDay");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 searchCity("Zurich");
-showForecast();

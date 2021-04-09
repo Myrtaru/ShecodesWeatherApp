@@ -72,9 +72,13 @@ color:#192e31;
 cursor: default;
 }
 .col-2{
+  display:inline-block;
+  vertical-align: middle;
+  float: none;
   background: rgba(255, 255, 255, 0.6);
   color:#192e31;
-  padding: 0.3em 0.1em;
+  margin: 0 auto;
+  padding: 0.3em 0;
   border: 1px solid#192e31;
   border-radius: 5px;
   box-shadow:#192e31 0px 5px 5px 0;
