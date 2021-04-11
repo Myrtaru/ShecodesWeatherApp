@@ -12,13 +12,13 @@ function formatDate(timestamp) {
     minutes = `0${minutes}`;
   }
   let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    "Sonntag",
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
   ];
   let day = days [date.getDay()];
   document.querySelector("#actualDay").innerHTML = day;
@@ -27,7 +27,7 @@ function formatDate(timestamp) {
 function formatDay(timestamp){
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let dayShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let dayShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
   return dayShort[day]
 }
 function showTempNight(response) {
@@ -104,7 +104,7 @@ function showTemperature(response) {
 }
 function searchCity(city) {
   let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=de&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 function submitSearch(event) {
@@ -129,10 +129,13 @@ let celsiusTemp = null;
 let formInput = document.querySelector("#search-form");
 formInput.addEventListener("submit", submitSearch);
 
+let buttonInput = document.querySelector("#button");
+buttonInput.addEventListener("click", submitSearch);
+
 let fahrenheitLink = document.querySelector("#linkFahrenheitDay");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#linkCelsiusDay");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
-searchCity("Zurich");
+searchCity("Zürich");
