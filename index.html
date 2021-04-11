@@ -17,19 +17,27 @@
       <div class="col-sm-4">
         <div class="weatherOverview">
          <img src="" alt="" id="icon" class="float-left" />
-        <p id="description"></p>
-          <span class="dayTemperature"><strong id="dayTemp"></strong>
+         <p id="description"></p>
+          <div class="dayTemperature"><strong id="dayTemp"></strong>
               <span class="units">
                 <a href="#" id="linkCelsiusDay" class="active">°C</a>
                 |<a href="#" id="linkFahrenheitDay">°F</a></span>
-              </span>    
+              </div>
+               <div class="nightTemperature">
+                 <span id="nightTemp"></span>
+                 <span class="units">
+                °C
+                </span>
+                 </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
       <ul> 
         <li>Last updated:</li>
        <p>
-       <span id="date"></span>
+       <p id="actualDay"></p>
+       <li id="date">
+       </li>
        </p>
        <h1 id="city"></h1>
         <li>
@@ -47,18 +55,22 @@
               autofocus="on"
               autocomplete="off"
             />
-            <button>
-              Search
-            </button>
           </form>
+          <button>
+          Search
+            </button>
       </div>
+      <div class="col-sm-4">
       <div class="weatherForecast" id="forecast">
+      </div>
       </div>
     </div>
    </div>
-  <div>
-   <a href="https://github.com/Myrtaru/ShecodesWeatherApp" target="-blank">Open-source code on GitHub</a>
-  <span style="color:rgb(235, 110, 75)"> by Myrta Rüegger</span>
+  <div> 
+  <span style="color:rgb(235, 110, 75)"> Coded by Myrta Rüegger,
+  <a href="https://github.com/Myrtaru/ShecodesWeatherApp" target="-blank">open-sourced on GitHub</a>
+  and <a href="https://tender-shirley-0efb59.netlify.app" target="-blank">hosted on Netlify</a>
+  </span>
   </div>
   </div>
   <script src="src/index.js"></script>
