@@ -107,8 +107,7 @@ cursor: default;
 .weatherForecastDate{
   font-weight: bold;
 }
-.col-sm-8{
-text-align: left;
+.col-sm-8 {
 background: rgba(255, 255, 255, 0.7);
 padding: 1.2em 0.5em 0.5em 0.5em;
 border-radius: 0  5px 5px 0;
