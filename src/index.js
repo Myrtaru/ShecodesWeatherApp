@@ -1,7 +1,7 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let actualDate = date.getDate();
-  let month = (date.getMonth()+1);
+  let month = date.getMonth() + 1;
   let year = date.getFullYear();
   let hours = date.getHours();
   if (hours < 10) {
@@ -20,33 +20,33 @@ function formatDate(timestamp) {
     "Freitag",
     "Samstag",
   ];
-  let day = days [date.getDay()];
+  let day = days[date.getDay()];
   document.querySelector("#actualDay").innerHTML = day;
   return `${actualDate}. ${month}. ${year} ${hours}:${minutes}`;
 }
-function formatDay(timestamp){
+function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let dayShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
-  return dayShort[day]
+  return dayShort[day];
 }
 function showTempNight(response) {
   let nightTemp = response.data.daily;
   nightTemp.forEach(function (forecastNight, index) {
     if (index < 1) {
-       document.querySelector("#nightTemp").innerHTML = Math.round(
-         forecastNight.temp.night
-       );
-    } 
+      document.querySelector("#nightTemp").innerHTML = Math.round(
+        forecastNight.temp.min
+      );
+    }
   });
 }
-function showForecast(response){
+function showForecast(response) {
   let dailyForecast = response.data.daily;
   let forecast = document.querySelector("#forecast");
   let forecastHTML = `<div class="row g-0">`;
-  dailyForecast.forEach(function (forecastDay, index){
-    if (index > 0 && index < 6){
-  forecastHTML += `
+  dailyForecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML += `
     <div class="card-mb-3">
     <div class="row g-0">
         <div class="col-sm-4", id="forecastData">
@@ -75,13 +75,13 @@ function showForecast(response){
     }
   });
   forecastHTML = forecastHTML + `</div>`;
-forecast.innerHTML = forecastHTML;
+  forecast.innerHTML = forecastHTML;
 }
-function getForecast(coords){
-let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
-let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showTempNight);
-axios.get(apiUrl).then(showForecast);
+function getForecast(coords) {
+  let apiKey = "d161f604274c06b1e5ec41b1728c9abc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTempNight);
+  axios.get(apiUrl).then(showForecast);
 }
 function showTemperature(response) {
   celsiusTemp = response.data.main.temp;
@@ -91,15 +91,17 @@ function showTemperature(response) {
     response.data.weather[0].description;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
-    3.6 * response.data.wind.speed);
+    3.6 * response.data.wind.speed
+  );
   document.querySelector("#date").innerHTML = formatDate(
-    response.data.dt * 1000);
-    let iconElement = document.querySelector("#icon");
-    iconElement.setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-    iconElement.setAttribute("alt", response.data.weather[0].description);
+    response.data.dt * 1000
+  );
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
 function searchCity(city) {
@@ -109,14 +111,16 @@ function searchCity(city) {
 }
 function submitSearch(event) {
   event.preventDefault();
-let searchInput = document.querySelector("#search-input");
-searchCity(searchInput.value);
-} 
-function showFahrenheitTemp(event){
+  let searchInput = document.querySelector("#search-input");
+  searchCity(searchInput.value);
+}
+function showFahrenheitTemp(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  document.querySelector("#dayTemp").innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+  document.querySelector("#dayTemp").innerHTML = Math.round(
+    (celsiusTemp * 9) / 5 + 32
+  );
 }
 function showCelsiusTemp(event) {
   event.preventDefault();

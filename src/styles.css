@@ -7,7 +7,7 @@ h1 {
   font-weight: bold;
 }
 p {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: bold;
   margin: 0 auto;
 }
@@ -88,7 +88,7 @@ cursor: default;
 .nightTemperature {  
   position: relative;
   margin: 0.2em 2em ;
-  background-color:rgba(25, 46, 49, 0.5 );
+  background-color:rgba(25, 46, 49, 0.3 );
   color: white;
 }
 .card-mb-3{
@@ -114,7 +114,7 @@ border-radius: 0  5px 5px 0;
 }
 
 #forecastData{
-background-color: rgba(25, 46, 49, 0.5);
+background-color: rgba(25, 46, 49, 0.3);
 color: white;
 }
 
